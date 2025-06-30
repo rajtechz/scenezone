@@ -17,8 +17,29 @@ import applestore from "@/assets/icons/applestore.png";
 import playstore from "@/assets/icons/playstore.png";
 import { Search, CalendarPlus, Handshake } from "lucide-react";
 
+import { FaBullseye, FaChartBar, FaChartLine } from "react-icons/fa";
 
 const Host = () => {
+  const features = [
+    {
+      icon: <FaBullseye className="w-6 h-6 text-white" />,
+      title: "Tools Tailored for Event Creators",
+      description:
+        "Comprehensive event management tools designed specifically for event creators and hosts.",
+    },
+    {
+      icon: <FaChartBar className="w-6 h-6 text-white" />,
+      title: "All-In-One Dashboard",
+      description:
+        "Control every aspect of your event from one central, intuitive dashboard interface.",
+    },
+    {
+      icon: <FaChartLine className="w-6 h-6 text-white" />,
+      title: "Advanced Reporting & Analytics in One Place",
+      description:
+        "Get detailed insights and analytics to optimize your events and maximize success.",
+    },
+  ];
   return (
     <div className="min-h-screen bg-black text-white">
       <section className="py-20 bg-black relative overflow-hidden">
@@ -193,65 +214,67 @@ const Host = () => {
   `}</style>
       </section>
 
-   {/* How It Works Section */}
-<section className="py-20 bg-gradient-to-r from-purple-900 via-pink-900 to-purple-900">
-  <div className="container mx-auto px-4">
-    <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-fade-in">
-      How It Works?
-    </h2>
+      {/* How It Works Section */}
+      <section className="py-20 bg-gradient-to-r from-purple-900 via-pink-900 to-purple-900">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-fade-in">
+            How It Works?
+          </h2>
 
-    <div className="grid md:grid-cols-3 gap-8">
-      {/* Search Event */}
-      <div
-        className="text-center animate-fade-in"
-        style={{ animationDelay: "0.2s" }}
-      >
-        <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
-          <Search className="w-8 h-8 text-white" />
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Search Event */}
+            <div
+              className="text-center animate-fade-in"
+              style={{ animationDelay: "0.2s" }}
+            >
+              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Search className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Search Event
+              </h3>
+              <p className="text-gray-200">
+                Browse events tailored to your interests using powerful filters
+                and tags.
+              </p>
+            </div>
+
+            {/* Create Events */}
+            <div
+              className="text-center animate-fade-in"
+              style={{ animationDelay: "0.4s" }}
+            >
+              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <CalendarPlus className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Create Events
+              </h3>
+              <p className="text-gray-200">
+                Set up your event quickly with tools that offer full flexibility
+                and control.
+              </p>
+            </div>
+
+            {/* Book and Connect */}
+            <div
+              className="text-center animate-fade-in"
+              style={{ animationDelay: "0.6s" }}
+            >
+              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Handshake className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Book and Connect
+              </h3>
+              <p className="text-gray-200">
+                Connect with artists and manage every aspect of your booking
+                seamlessly.
+              </p>
+            </div>
+          </div>
         </div>
-        <h3 className="text-2xl font-bold text-white mb-4">
-          Search Event
-        </h3>
-        <p className="text-gray-200">
-          Browse events tailored to your interests using powerful filters and tags.
-        </p>
-      </div>
-
-      {/* Create Events */}
-      <div
-        className="text-center animate-fade-in"
-        style={{ animationDelay: "0.4s" }}
-      >
-        <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
-          <CalendarPlus className="w-8 h-8 text-white" />
-        </div>
-        <h3 className="text-2xl font-bold text-white mb-4">
-          Create Events
-        </h3>
-        <p className="text-gray-200">
-          Set up your event quickly with tools that offer full flexibility and control.
-        </p>
-      </div>
-
-      {/* Book and Connect */}
-      <div
-        className="text-center animate-fade-in"
-        style={{ animationDelay: "0.6s" }}
-      >
-        <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
-          <Handshake className="w-8 h-8 text-white" />
-        </div>
-        <h3 className="text-2xl font-bold text-white mb-4">
-          Book and Connect
-        </h3>
-        <p className="text-gray-200">
-          Connect with artists and manage every aspect of your booking seamlessly.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
+      </section>
 
       {/* Features For Hosts Section */}
       <section className="py-20 bg-black">
@@ -261,37 +284,16 @@ const Host = () => {
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[
-              {
-                icon: "🎯",
-                title: "Tools Tailored for Event Creators",
-                description:
-                  "Comprehensive event management tools designed specifically for event creators and hosts.",
-              },
-              {
-                icon: "📊",
-                title: "All-In-One Dashboard",
-                description:
-                  "Control every aspect of your event from one central, intuitive dashboard interface.",
-              },
-              {
-                icon: "📈",
-                title: "Advanced Reporting & Analytics in One Place",
-                description:
-                  "Get detailed insights and analytics to optimize your events and maximize success.",
-              },
-            ].map((feature, index) => (
+            {features.map((feature, index) => (
               <div
                 key={index}
                 className="group transition-transform duration-300 transform hover:scale-105 animate-fade-in"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                {/* Gradient Border Wrapper */}
                 <div className="p-[2px] h-full rounded-xl bg-gradient-to-b from-[#CC5500] via-[#663300] to-[#331A00]">
-                  {/* Inner Content Box */}
                   <div className="bg-[#0A060F] rounded-xl p-8 h-[340px] flex flex-col justify-between text-left">
                     <div>
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white mb-6 text-2xl">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-600 to-pink-600 flex items-center justify-center mb-6">
                         {feature.icon}
                       </div>
                       <h3 className="text-white text-lg font-semibold mb-3">
