@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-purple-900/20">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-5 py-5 flex items-center justify-between">
         <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
           SceneZone
         </div>
@@ -27,11 +27,21 @@ const Header = () => {
               <NavLink
                 key={item.name}
                 to={item.path}
+                // className={({ isActive }) =>
+                //   `transition-colors ${
+                //     isActive
+                //       ? "text-purple-400"
+                //       : "text-white hover:text-purple-400"
+                //   }`
+                // }
                 className={({ isActive }) =>
-                  `text-white transition-colors ${
-                    isActive ? "text-purple-400" : "hover:text-purple-400"
+                  `transition-colors ${
+                    isActive ? "" : "text-white hover:text-[#B20D5D]"
                   }`
                 }
+                style={({ isActive }) => ({
+                  color: isActive ? "#B20D5D" : undefined,
+                })}
                 onClick={() => window.scrollTo(0, 0)}
               >
                 {item.name}
@@ -90,13 +100,16 @@ const Header = () => {
                     />
                   </svg>
                 </button>
+
                 {navItems.map((item) => (
                   <NavLink
                     key={item.name}
                     to={item.path}
                     className={({ isActive }) =>
-                      `block text-white py-2 text-xl transition-colors ${
-                        isActive ? "text-purple-400" : "hover:text-purple-400"
+                      `block py-2 text-xl transition-colors ${
+                        isActive
+                          ? "text-purple-400"
+                          : "text-white hover:text-purple-400"
                       }`
                     }
                     onClick={() => setIsOpen(false)}
@@ -104,6 +117,7 @@ const Header = () => {
                     {item.name}
                   </NavLink>
                 ))}
+
                 <Link to="/login" onClick={() => setIsOpen(false)}>
                   <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 w-full mt-6">
                     Login
