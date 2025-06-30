@@ -2,7 +2,6 @@ import React from "react";
 import applestore from "@/assets/icons/applestore.png";
 import playstore from "@/assets/icons/playstore.png";
 import homehero from "@/assets/HomeHero.png";
-
 const Hero = () => {
   return (
     <section className="relative bg-[#0A060F] py-20 overflow-hidden">
@@ -16,7 +15,6 @@ const Hero = () => {
               className="w-full h-full object-cover"
             />
           </div>
-
           {/* Left Content Overlapping on Image */}
           <div className="z-20 relative space-y-6">
             <p className="text-white text-sm tracking-widest uppercase">
@@ -32,8 +30,8 @@ const Hero = () => {
 
             <div className="text-gray-300 text-base md:text-lg space-y-2 max-w-lg">
               <p>
-                Imagine being able to book the best live band or DJ for your next
-                party or event.
+                Imagine being able to book the best live band or DJ for your
+                next party or event.
               </p>
               <p>
                 Imagine being able to find the best live music happening near
@@ -42,7 +40,9 @@ const Hero = () => {
             </div>
 
             <div className="pt-4">
-              <p className="text-white font-semibold text-sm md:text-base mb-2">DOWNLOAD APP NOW</p>
+              <p className="text-white font-semibold text-sm md:text-base mb-2">
+                DOWNLOAD APP NOW
+              </p>
               <div className="flex items-center space-x-4">
                 <img
                   src={applestore}
@@ -62,5 +62,4 @@ const Hero = () => {
     </section>
   );
 };
-
 export default Hero;

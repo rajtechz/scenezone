@@ -17,10 +17,9 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-purple-900/20">
       <div className="container mx-auto px-5 py-5 flex items-center justify-between">
-      <div className="flex items-center">
-  <img src={logo} alt="SceneZone Logo" className="h-10 w-auto" />
-</div>
-
+        <div className="flex items-center">
+          <img src={logo} alt="SceneZone Logo" className="h-10 w-auto" />
+        </div>
 
         <nav className="md:flex items-center space-x-8">
           <div className="hidden md:flex items-center space-x-8">
@@ -106,7 +105,10 @@ const Header = () => {
                           : "text-white hover:text-purple-400"
                       }`
                     }
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => {
+                      setIsOpen(false);
+                      window.scrollTo(0, 0);
+                    }}
                   >
                     {item.name}
                   </NavLink>
