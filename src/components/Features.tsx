@@ -1,25 +1,27 @@
-import React from 'react';
-import { Briefcase, Mic, CalendarHeart } from 'lucide-react';
-
+import React from "react";
+import { Briefcase, Mic, CalendarHeart } from "lucide-react";
+import icon from "@/assets/icons/Icon.png";
+import icon1 from "@/assets/icons/Icon1.png";
+import icon2 from "@/assets/icons/Icon2.png";
 const Features = () => {
   const features = [
     {
-      // icon: <Briefcase size={24} />,  
-      icon: "🎤",
+      icon: <Briefcase size={24} />,
+      // icon: "🎤",
       title: "For Event Hosts",
       description:
         "Having trouble finding the right performers for your events and getting crowd? Get the most affordable and the top A-listed Artists.",
     },
     {
-      // icon: <Mic size={24} />,
-            icon: "🎵",
+      icon: <Mic size={24} />,
+    
       title: "For Performers",
       description:
         "If you aren’t booked for as many events as they would like, we get you 10 guaranteed gigs a month.",
     },
     {
-      // icon: <CalendarHeart size={24} />,
-          icon: "🎉",
+      icon: <CalendarHeart size={24} />,
+      
       title: "For Visitors",
       description:
         "Don't have an easy way to find events happening near you? Here you can get into discounted guestlists on a daily basis and book tickets for flagship live entertainment performances.",
@@ -31,9 +33,10 @@ const Features = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Why You Should Join<br />
+            Why You Should Join
+            <br />
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              SceneZone  ?
+              SceneZone ?
             </span>
           </h2>
         </div>
@@ -59,10 +62,6 @@ const Features = () => {
                       {feature.description}
                     </p>
                   </div>
-
-                  <button className="mt-6 text-sm text-white font-medium inline-flex items-center gap-2 group-hover:text-pink-400 transition-colors">
-                    Read More <span className="ml-1">→</span>
-                  </button>
                 </div>
               </div>
             </div>

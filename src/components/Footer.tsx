@@ -1,6 +1,8 @@
 
 import React from 'react';
 import footerlogo from '@/assets/icons/footerlogo.png'; // Assuming you have a logo image
+import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa';
+
 const Footer = () => {
   return (
     <footer className="bg-black border-t border-purple-900/20 py-16">
@@ -28,26 +30,54 @@ const Footer = () => {
             <h3 className="text-white font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-gray-400">
               <li>📧 info@scenezone.com</li>
-              <li>📞 +44 77663 886896</li>
-              <li>📍 UK Main Office</li>
+              <li>📞 +91 9654551209</li>
+              <li>📍 India Main Office</li>
               <li>🌐 www.scenezone.com</li>
             </ul>
           </div>
           
-          <div>
-            <h3 className="text-white font-semibold mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white hover:bg-purple-700 transition-colors">f</a>
-              <a href="#" className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition-colors">t</a>
-              <a href="#" className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white hover:bg-purple-700 transition-colors">i</a>
-              <a href="#" className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition-colors">y</a>
-            </div>
-          </div>
+         <div>
+  <h3 className="text-white font-semibold mb-4">Follow Us</h3>
+  <div className="flex space-x-4">
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white hover:bg-purple-700 transition-colors"
+    >
+      <FaFacebookF size={18} />
+    </a>
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition-colors"
+    >
+      <FaTwitter size={18} />
+    </a>
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white hover:bg-purple-700 transition-colors"
+    >
+      <FaInstagram size={18} />
+    </a>
+    <a
+      href="#"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition-colors"
+    >
+      <FaYoutube size={18} />
+    </a>
+  </div>
+</div>
         </div>
         
         <div className="border-t border-purple-900/20 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © Copyright 2024 | All Rights Reserved | Privacy Policy | Contact Us
+            © Copyright 2024 | All Rights Reserved 
           </p>
           <p className="text-gray-400 text-sm">
             Terms & Conditions | Privacy Policy | Contact Us

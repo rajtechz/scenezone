@@ -8,10 +8,15 @@ import img2 from "@/assets/img2.png";
 import img3 from "@/assets/img3.png";
 import img4 from "@/assets/img4.png";
 import img5 from "@/assets/img5.png";
-import gallery from "@/assets/gallery.png"
-import gallery1 from "@/assets/gallery1.png"
-import gallery2 from "@/assets/gallery2.png"
-import gallery3 from "@/assets/gallery3.png"
+import gallery from "@/assets/gallery.png";
+import gallery1 from "@/assets/gallery1.png";
+import gallery2 from "@/assets/gallery2.png";
+import gallery3 from "@/assets/gallery3.png";
+import { Wrench, Zap, DollarSign } from "lucide-react";
+import applestore from "@/assets/icons/applestore.png";
+import playstore from "@/assets/icons/playstore.png";
+import { Search, CalendarPlus, Handshake } from "lucide-react";
+
 
 const Host = () => {
   return (
@@ -31,22 +36,21 @@ const Host = () => {
               <p className="text-gray-300 text-base max-w-md">
                 Bring your vision to life – start hosting events in minutes.
               </p>
-              <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 py-3 rounded-full text-md font-semibold transition-all duration-300">
-                Coming Soon →
-              </Button>
+              <div className="flex items-center space-x-4 pt-4">
+                <img
+                  src={applestore}
+                  alt="App Store"
+                  className="h-12 w-auto object-contain cursor-pointer"
+                />
+                <img
+                  src={playstore}
+                  alt="Google Play"
+                  className="h-12 w-auto object-contain cursor-pointer"
+                />
+              </div>
             </div>
 
-            {/* Right Image */}
-            {/* <div className="flex justify-center items-center animate-scale-in relative">
-              <img
-                src={mic}
-                alt="Mic"
-                className="w-[300px] h-auto z-20 relative"
-              />
-            
-            </div> */}
-
-             <div className="relative flex justify-center items-center animate-scale-in">
+            <div className="relative flex justify-center items-center animate-scale-in">
               <div className="w-83 h-83 relative">
                 <img
                   src={mic}
@@ -85,26 +89,31 @@ const Host = () => {
           </p>
 
           <div className="space-y-6 mb-12 animate-fade-in">
+            {/* Tools Icon */}
             <div className="flex items-center justify-center space-x-4">
               <div className="w-6 h-6 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-sm">🛠️</span>
+                <Wrench className="w-4 h-4 text-white" />
               </div>
               <p className="text-white text-lg">
                 Access Powerful Tools And A Passionate Community.
               </p>
             </div>
+
+            {/* Lightning Bolt Icon */}
             <div className="flex items-center justify-center space-x-4">
               <div className="w-6 h-6 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-sm">⚡</span>
+                <Zap className="w-4 h-4 text-white" />
               </div>
               <p className="text-white text-lg">
                 Flexible Options, Quick Setup, And Full Control Over Your
                 Events.
               </p>
             </div>
+
+            {/* Revenue Icon */}
             <div className="flex items-center justify-center space-x-4">
               <div className="w-6 h-6 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center">
-                <span className="text-white text-sm">💰</span>
+                <DollarSign className="w-4 h-4 text-white" />
               </div>
               <p className="text-white text-lg">
                 Earn Revenue, Grow Your Brand, And Connect With Your Audience.
@@ -118,101 +127,131 @@ const Host = () => {
         </div>
       </section>
 
-      {/* Artist Profiles Section */}
-      <section className="py-20 bg-gradient-to-br from-black via-purple-900/20 to-black">
+      {/* Artist Profiles Section with Infinite Auto-Slide */}
+      <section className="py-20 bg-gradient-to-br from-black via-purple-900/20 to-black overflow-hidden">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-8">
-            {[
-              { name: "Johney Deo", img: img1 },
-              { name: "Liam Carter", img: img2 },
-              { name: "Emma Thompson", img: img3 },
-              { name: "Noah Johnson", img: img4 },
-              { name: "Olivia Brown", img: img5 },
-            ].map((artist, index) => (
-              <div
-                key={index}
-                className="w-[160px] text-center animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="relative w-[160px] h-[160px] rounded-full overflow-hidden mx-auto shadow-lg">
-                  <img
-                    src={artist.img}
-                    alt={artist.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute bottom-0 w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs font-semibold py-1">
-                    Crowd Guarantee
-                  </div>
-                </div>
-                <h3 className="mt-4 text-white font-bold text-lg">
-                  {artist.name}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-900 via-pink-900 to-purple-900">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-fade-in">
-            How It Works?
+          <h2 className="text-4xl font-bold text-white text-center mb-10">
+            Meet the Artists
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div
-              className="text-center animate-fade-in"
-              style={{ animationDelay: "0.2s" }}
-            >
-              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl">🔍</span>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Search Event
-              </h3>
-              <p className="text-gray-200">
-                Lorem ipsum dolor sit amet consectetur adipiscing elit sed do
-                eiusmod tempor incididunt
-              </p>
-            </div>
-
-            <div
-              className="text-center animate-fade-in"
-              style={{ animationDelay: "0.4s" }}
-            >
-              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl">📅</span>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Create Events
-              </h3>
-              <p className="text-gray-200">
-                Set up your event quickly and easily with our powerful event
-                creation tools and features
-              </p>
-            </div>
-
-            <div
-              className="text-center animate-fade-in"
-              style={{ animationDelay: "0.6s" }}
-            >
-              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-3xl">🤝</span>
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Book and Connect
-              </h3>
-              <p className="text-gray-200">
-                Connect directly with artists, book performances, and manage all
-                your event logistics
-              </p>
+          <div className="relative overflow-hidden w-full max-w-4xl mx-auto">
+            <div className="flex animate-infinite-scroll">
+              {/* Duplicated content to create seamless loop */}
+              {[
+                { name: "Johney Deo", img: img1 },
+                { name: "Liam Carter", img: img2 },
+                { name: "Emma Thompson", img: img3 },
+                { name: "Noah Johnson", img: img4 },
+                { name: "Olivia Brown", img: img5 },
+              ]
+                .concat([
+                  { name: "Johney Deo", img: img1 },
+                  { name: "Liam Carter", img: img2 },
+                  { name: "Emma Thompson", img: img3 },
+                  { name: "Noah Johnson", img: img4 },
+                  { name: "Olivia Brown", img: img5 },
+                ])
+                .map((artist, index) => (
+                  <div
+                    key={index}
+                    className="w-[200px] text-center flex-shrink-0 px-4"
+                  >
+                    <div className="relative w-[160px] h-[160px] rounded-full overflow-hidden mx-auto shadow-lg">
+                      <img
+                        src={artist.img}
+                        alt={artist.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="mt-4 text-white font-bold text-lg">
+                      {artist.name}
+                    </h3>
+                  </div>
+                ))}
             </div>
           </div>
         </div>
+
+        <style>{`
+    @keyframes infinite-scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    .animate-infinite-scroll {
+      width: max-content;
+      animation: infinite-scroll 30s linear infinite;
+    }
+
+    .animate-infinite-scroll:hover {
+      animation-play-state: paused;
+    }
+  `}</style>
       </section>
 
-     
+   {/* How It Works Section */}
+<section className="py-20 bg-gradient-to-r from-purple-900 via-pink-900 to-purple-900">
+  <div className="container mx-auto px-4">
+    <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-fade-in">
+      How It Works?
+    </h2>
+
+    <div className="grid md:grid-cols-3 gap-8">
+      {/* Search Event */}
+      <div
+        className="text-center animate-fade-in"
+        style={{ animationDelay: "0.2s" }}
+      >
+        <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <Search className="w-8 h-8 text-white" />
+        </div>
+        <h3 className="text-2xl font-bold text-white mb-4">
+          Search Event
+        </h3>
+        <p className="text-gray-200">
+          Browse events tailored to your interests using powerful filters and tags.
+        </p>
+      </div>
+
+      {/* Create Events */}
+      <div
+        className="text-center animate-fade-in"
+        style={{ animationDelay: "0.4s" }}
+      >
+        <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <CalendarPlus className="w-8 h-8 text-white" />
+        </div>
+        <h3 className="text-2xl font-bold text-white mb-4">
+          Create Events
+        </h3>
+        <p className="text-gray-200">
+          Set up your event quickly with tools that offer full flexibility and control.
+        </p>
+      </div>
+
+      {/* Book and Connect */}
+      <div
+        className="text-center animate-fade-in"
+        style={{ animationDelay: "0.6s" }}
+      >
+        <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
+          <Handshake className="w-8 h-8 text-white" />
+        </div>
+        <h3 className="text-2xl font-bold text-white mb-4">
+          Book and Connect
+        </h3>
+        <p className="text-gray-200">
+          Connect with artists and manage every aspect of your booking seamlessly.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Features For Hosts Section */}
       <section className="py-20 bg-black">
@@ -262,10 +301,6 @@ const Host = () => {
                         {feature.description}
                       </p>
                     </div>
-
-                    <button className="mt-6 text-sm text-white font-medium inline-flex items-center gap-2 group-hover:text-pink-400 transition-colors">
-                      Read More <span className="ml-1">→</span>
-                    </button>
                   </div>
                 </div>
               </div>
@@ -275,68 +310,67 @@ const Host = () => {
       </section>
 
       {/* Upcoming Events Section */}
-   <section className="py-20 bg-gradient-to-br from-black via-purple-900/20 to-black">
-  <div className="container mx-auto px-4">
-    <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-fade-in">
-      Upcoming Events
-    </h2>
+      <section className="py-20 bg-gradient-to-br from-black via-purple-900/20 to-black">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-fade-in">
+            Upcoming Events
+          </h2>
 
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {[
-        {
-          date: "14 DEC 2024",
-          title: "Neon Jazz Night",
-          venue: "Blue Moon",
-          image: gallery,
-        },
-        {
-          date: "18 DEC 2024",
-          title: "Electric Rock Fest",
-          venue: "Thunder Hall",
-          image: gallery1,
-        },
-        {
-          date: "22 DEC 2024",
-          title: "Underground Hip Hop",
-          venue: "Urban Beat",
-          image: gallery2,
-        },
-        {
-          date: "28 DEC 2024",
-          title: "Synth Pop Showcase",
-          venue: "Retro Club",
-          image: gallery3,
-        },
-      ].map((event, index) => (
-        <Card
-          key={event.title}
-          className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border-purple-500/20 hover:border-purple-400/40 transition-all duration-300 hover:scale-105 animate-fade-in cursor-pointer overflow-hidden"
-          style={{ animationDelay: `${index * 0.1}s` }}
-        >
-          <div className="relative h-48 w-full overflow-hidden">
-            <img
-              src={event.image}
-              alt={event.title}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute top-4 left-4 bg-black/60 px-3 py-1 rounded-full">
-              <span className="text-white text-sm font-semibold">
-                {event.date}
-              </span>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                date: "14 DEC 2024",
+                title: "Neon Jazz Night",
+                venue: "Blue Moon",
+                image: gallery,
+              },
+              {
+                date: "18 DEC 2024",
+                title: "Electric Rock Fest",
+                venue: "Thunder Hall",
+                image: gallery1,
+              },
+              {
+                date: "22 DEC 2024",
+                title: "Underground Hip Hop",
+                venue: "Urban Beat",
+                image: gallery2,
+              },
+              {
+                date: "28 DEC 2024",
+                title: "Synth Pop Showcase",
+                venue: "Retro Club",
+                image: gallery3,
+              },
+            ].map((event, index) => (
+              <Card
+                key={event.title}
+                className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 border-purple-500/20 hover:border-purple-400/40 transition-all duration-300 hover:scale-105 animate-fade-in cursor-pointer overflow-hidden"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="relative h-48 w-full overflow-hidden">
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-4 left-4 bg-black/60 px-3 py-1 rounded-full">
+                    <span className="text-white text-sm font-semibold">
+                      {event.date}
+                    </span>
+                  </div>
+                </div>
+                <CardContent className="p-6 bg-black/90">
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {event.title}
+                  </h3>
+                  <p className="text-purple-400">{event.venue}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-          <CardContent className="p-6 bg-black/90">
-            <h3 className="text-xl font-bold text-white mb-2">
-              {event.title}
-            </h3>
-            <p className="text-purple-400">{event.venue}</p>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  </div>
-</section>
-
+        </div>
+      </section>
     </div>
   );
 };

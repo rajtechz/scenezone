@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, NavLink } from "react-router-dom";
-
+import logo from "@/assets/logo/logo.png";
 const Header = () => {
   const navItems = [
     { name: "HOME", path: "/" },
@@ -17,9 +17,10 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-purple-900/20">
       <div className="container mx-auto px-5 py-5 flex items-center justify-between">
-        <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-          SceneZone
-        </div>
+      <div className="flex items-center">
+  <img src={logo} alt="SceneZone Logo" className="h-10 w-auto" />
+</div>
+
 
         <nav className="md:flex items-center space-x-8">
           <div className="hidden md:flex items-center space-x-8">
@@ -27,13 +28,6 @@ const Header = () => {
               <NavLink
                 key={item.name}
                 to={item.path}
-                // className={({ isActive }) =>
-                //   `transition-colors ${
-                //     isActive
-                //       ? "text-purple-400"
-                //       : "text-white hover:text-purple-400"
-                //   }`
-                // }
                 className={({ isActive }) =>
                   `transition-colors ${
                     isActive ? "" : "text-white hover:text-[#B20D5D]"
@@ -118,9 +112,12 @@ const Header = () => {
                   </NavLink>
                 ))}
 
-                <Link to="/login" onClick={() => setIsOpen(false)}>
+                <Link
+                  to="https://www.google.com/"
+                  onClick={() => setIsOpen(false)}
+                >
                   <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 w-full mt-6">
-                    Login
+                    Admin Login
                   </Button>
                 </Link>
               </div>
@@ -130,9 +127,9 @@ const Header = () => {
 
         {/* Login button for desktop */}
         <div className="hidden md:block">
-          <Link to="/login">
+          <Link to="https://www.google.com/">
             <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0">
-              Login
+              Admin Login
             </Button>
           </Link>
         </div>

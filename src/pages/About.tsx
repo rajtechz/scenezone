@@ -1,6 +1,13 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Briefcase, Mic, CalendarHeart } from "lucide-react";
+import { FaCrown } from "react-icons/fa";
+import { GiGuitar } from "react-icons/gi";
+import { CiHeart } from "react-icons/ci";
+import story  from "@/assets/story.png"
+
+
 import {
   CheckCircle,
   Users,
@@ -19,45 +26,49 @@ import cover1 from "@/assets/Cover (1).png";
 import cover2 from "@/assets/Cover (2).png";
 import cover3 from "@/assets/Cover (3).png";
 const About = () => {
-  const steps = [
+const steps = [
     {
       title: "Host Journey",
-      color: "from-red-500 to-pink-500",
-      border: "border-[#FF4081]",
-      icon: "👑",
+      icon: <FaCrown className="w-6 h-6" />,
+      color: "from-purple-600 to-pink-600",
+      border: "border-purple-500",
       items: [
-        "Quick Registration",
-        "Easy event creation",
-        "Event Promotion",
-        "Artist Discovery",
-        "Real-time analytics",
-        "Secure payment system",
+        { title: "Quick Registration" },
+        { title: "Sign Up as Host with Google/Apple or create account with full details" },
+        { title: "Event Creation" },
+        { title: "Create new events or utilise existing SceneZone events" },
+        { title: "Artist Discovery" },
+        { title: "Filter artists by price, instrument, and genre preferences" },
+        { title: "Flexible Hiring" },
+        { title: "Hire on salary basis, add to existing events, or create new collaboration" },
       ],
     },
     {
       title: "Artist Journey",
-      color: "from-purple-500 to-pink-500",
-      border: "border-[#FF4081]",
-      icon: "🎤",
+      icon: <GiGuitar className="w-6 h-6" />,
+      color: "from-indigo-600 to-blue-600",
+      border: "border-indigo-500",
       items: [
-        "Profile setup",
-        "Upload portfolio",
-        "Discover events",
-        "Smart matching",
-        "Contract management",
-        "Performance",
+        { title: "Profile Setup" },
+        { title: "Define your interest, preferred event types, and target audience" },
+        { title: "Event Selection" },
+        { title: "Browse and add preferred events to your performance wishlist" },
+        { title: "Smart Matching" },
+        { title: "Get discovered by hosts through our intelligent filtering system" },
+        { title: "Performance" },
+        { title: "Showcase your talent and connect with the perfect audience" },
       ],
     },
     {
       title: "User Side",
-      color: "from-pink-500 to-purple-500",
-      border: "border-[#FF4081]",
-      icon: "💖",
+      icon: <CiHeart className="w-6 h-6" />,
+      color: "from-red-600 to-pink-600",
+      border: "border-red-500",
       items: [
-        "Browse events by interests",
-        "Get personalized events",
-        "Smooth ticket purchase",
-        "Enjoy amazing music experiences",
+        { title: "Browse events by interests" },
+        { title: "Select preferred events" },
+        { title: "Book tickets easily" },
+        { title: "Enjoy amazing musical experiences" },
       ],
     },
   ];
@@ -164,37 +175,30 @@ const About = () => {
       </section>
 
       {/* Our Story */}
-      <section className="py-20 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
+     <section className="py-20 bg-gradient-to-r from-purple-700 to-pink-700">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-white mb-8">Our Story</h2>
+              <h2 className="text-4xl font-bold text-white mb-8 border-b-2 border-blue-500 pb-4">Our Story</h2>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                SceneZone was born from a simple observation: the music industry
-                needed a bridge. A bridge between talented artists seeking the
-                right stage, passionate hosts with grand visions, and music
-                lovers hungry for authentic experiences.
+                SceneZone was born from a simple observation: the music industry needed a bridge. A bridge between talented artists seeking the right stage, passionate hosts with grand visions, and music lovers hungry for authentic experiences.
               </p>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                Founded by a team of music enthusiasts and tech innovators, we
-                recognized that the traditional event booking process was
-                fragmented, inefficient, and often left so parties unsatisfied.
+                Founded by a team of music enthusiasts and tech innovators, we recognized that the traditional event booking process was fragmented, inefficient, and often left all parties unsatisfied.
               </p>
               <p className="text-gray-300 leading-relaxed">
-                Today, SceneZone stands as more than just a platform; it's a
-                thriving community where creativity meets opportunity, where
-                dreams take the stage, and where every event becomes a
-                masterpiece of shared experience.
+                Today, SceneZone stands as more than just a platform; it’s a thriving community where creativity meets opportunity, where dreams take the stage, and where every event becomes a masterpiece.
               </p>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-2xl p-8 h-96 flex items-center justify-center">
+              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 rounded-2xl p-4 overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&h=400&fit=crop"
+                  src={story}
                   alt="Musicians performing"
-                  className="w-full h-full object-cover rounded-xl"
+                  className=" object-cover rounded-xl"
                 />
               </div>
+             
             </div>
           </div>
         </div>
@@ -207,8 +211,7 @@ const About = () => {
               Our Core Values
             </h2>
             <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-              These principles guide everything we do, from product development
-              to community building.
+            These principles guide everything we do, from product development to community building
             </p>
           </div>
           <div className="grid md:grid-cols-4 gap-6">
@@ -254,9 +257,11 @@ const About = () => {
           </div>
         </div>
       </section>
-      <section className="py-20 bg-[#0A0215] text-white">
+
+
+      <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-in">
             <h2 className="text-3xl font-bold mb-4">How SceneZone Works</h2>
             <p className="text-gray-300 max-w-2xl mx-auto text-sm">
               Our Platform Is Designed With Three Distinct User Journeys, Each
@@ -264,28 +269,27 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {steps.map((step, idx) => (
+          <div className="grid md:grid-cols-3 gap-8 mt-10">
+            {steps.map((step, index) => (
               <div
-                key={idx}
-                className={`rounded-xl p-6 ${step.border} border-[1.5px] bg-[#0A0215] hover:shadow-xl hover:scale-[1.02] transition duration-300`}
+                key={index}
+                className={`rounded-xl p-8 bg-black text-white border ${step.border} hover:shadow-lg hover:scale-105 transition-transform duration-300 animate-fade-in`}
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className="flex items-center mb-4">
-                  <div
-                    className={`w-10 h-10 text-2xl rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center mr-4`}
-                  >
+                <div className="flex items-center space-x-3 mb-6">
+                  <div className={`w-10 h-10 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white`}>
                     {step.icon}
                   </div>
-                  <h3 className="text-xl font-bold">{step.title}</h3>
+                  <h3 className="text-2xl font-bold">{step.title}</h3>
                 </div>
-                <ul className="space-y-3 mt-4">
-                  {step.items.map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start text-sm text-gray-300"
-                    >
-                      <CheckCircle className="w-4 h-4 text-green-400 mr-2 mt-[2px]" />
-                      {item}
+
+                <ul className="space-y-4">
+                  {step.items.map((item, idx) => (
+                    <li key={idx}>
+                      <p className="font-medium flex items-start">
+                        <span className="text-green-400 mr-2">✔</span>
+                        {item.title}
+                      </p>
                     </li>
                   ))}
                 </ul>

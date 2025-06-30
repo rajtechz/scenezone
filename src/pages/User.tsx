@@ -17,34 +17,39 @@ import {
 } from "lucide-react";
 
 import p3 from "@/assets/p3.png";
-import cover1 from "@/assets/Cover (1).png"
-import cover2 from "@/assets/Cover (2).png"
-import cover3 from "@/assets/Cover (3).png"
+import cover1 from "@/assets/Cover (1).png";
+import cover2 from "@/assets/Cover (2).png";
+import cover3 from "@/assets/Cover (3).png";
+
+import applestore from "@/assets/icons/applestore.png";
+import playstore from "@/assets/icons/playstore.png";
+import { FaTicketAlt } from "react-icons/fa";
+import { FaMusic, FaHeart, FaBullseye } from "react-icons/fa";
+
+
 const User = () => {
-  const services = [
-    {
-      icon: Users,
-      title: "Make Your Event Unforgettable",
-      description:
-        "Book top artists and entertainers for your special occasions",
-      color: "from-orange-500 to-red-500",
-    },
-    {
-      icon: Search,
-      title: "Explore Verified Artists by Genre & Mood",
-      description:
-        "Find the perfect artist that matches your event's vibe and style",
-      color: "from-blue-500 to-purple-500",
-    },
-    {
-      icon: MessageCircle,
-      title: "Chat & Book Directly",
-      description:
-        "Connect with artists directly and negotiate terms seamlessly",
-      color: "from-green-500 to-teal-500",
-    },
-  ];
- const events = [
+ 
+const services = [
+  {
+    icon: FaMusic,
+    title: "Easy, Secure Ticketing",
+    description: "Fast checkout. Safe payments",
+    color: "from-pink-500 to-purple-500",
+  },
+  {
+    icon: FaHeart,
+    title: "One-Tap Checkout",
+    description: "Buy your ticket in seconds — no forms, no fuss.",
+    color: "from-pink-500 to-purple-500",
+  },
+  {
+    icon: FaBullseye,
+    title: "QR Codes. No Printouts. No Hassle.",
+    description: "Entry made effortless — just show your phone.",
+    color: "from-pink-500 to-purple-500",
+  },
+];
+  const events = [
     {
       id: 1,
       title: "Indie Rock Explosion",
@@ -83,21 +88,21 @@ const User = () => {
   const features = [
     {
       icon: Shield,
-      title: "100% Secure Ticketing",
+      title: "Make Your Event Unforgettable",
       description:
-        "Your data is safe with our industry-leading security protocols",
+        "Bring energy and professionalism to your stage",
       color: "from-blue-500 to-cyan-500",
     },
     {
       icon: CreditCard,
-      title: "One-Tap Checkout",
-      description: "Lightning-fast payments with no hidden fees or hassles",
+      title: "Explore Verified Artists by Genre & Mood",
+      description: "Find performers that match your vibe.",
       color: "from-purple-500 to-pink-500",
     },
     {
       icon: Smartphone,
-      title: "QR Codes. No Printouts. No Hassle.",
-      description: "Digital tickets delivered instantly to your mobile device",
+      title: "Chat & Book Directly",
+      description: "No middlemen — just direct and easy booking",
       color: "from-green-500 to-emerald-500",
     },
   ];
@@ -136,34 +141,36 @@ const User = () => {
   return (
     <>
       {/* Final Hero Globe Section */}
-      <section className="relative min-h-screen bg-black overflow-hidden flex items-center">
+      <section className="relative bg-black overflow-hidden py-20">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-pink-900/20"></div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
             <p className="text-purple-400 text-sm font-medium tracking-wide uppercase">
               Experience Live Entertainment
             </p>
-            <h1 className="text-5xl lg:text-7xl font-bold text-white leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight">
               YOUR EVENT, YOUR WAY —{" "}
               <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 DISCOVER, BOOK, ENJOY
               </span>
             </h1>
-            <p className="text-gray-300 text-lg leading-relaxed max-w-xl">
+            <p className="text-gray-400 text-base leading-relaxed max-w-md">
               Discover the best live events in your city. From concerts to
               festivals, book your unforgettable experience today.
             </p>
-
-            <div className="flex flex-wrap gap-4">
-              <button className="group bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25 flex items-center gap-2">
-                Explore Events
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="group border border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-black px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-2">
-                <Play className="w-5 h-5" />
-                Watch Demo
-              </button>
+            <p className="text-white">DOWNLOAD APP NOW</p>
+            <div className="flex items-center space-x-4 ">
+              <img
+                src={applestore}
+                alt="App Store"
+                className="h-12 w-auto object-contain cursor-pointer"
+              />
+              <img
+                src={playstore}
+                alt="Google Play"
+                className="h-12 w-auto object-contain cursor-pointer"
+              />
             </div>
           </div>
 
@@ -189,125 +196,120 @@ const User = () => {
         </div>
       </section>
 
-      {/* Services Section */}
       <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Book Artists For Your Own Event
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+              Top Events For You
             </h2>
-            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Connect with talented artists and make your event truly memorable
+            <p className="text-gray-400 text-lg">
+              Discover the hottest events happening near you
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {events.map((event, index) => (
               <div
-                key={index}
-                className="group relative bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-8 hover:border-purple-500/50 transition-all duration-500 hover:scale-105"
-                style={{ animationDelay: `${index * 200}ms` }}
+                key={event.id}
+                className="group relative bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-2xl overflow-hidden border border-gray-700/50 hover:border-purple-500/70 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30"
+                style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-500`}
-                ></div>
+                {/* Image */}
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={event.image}
+                    alt={event.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
 
-                <div
-                  className={`relative w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
-                >
-                  <service.icon className="w-8 h-8 text-white" />
+                  {/* Category badge */}
+                  <div className="absolute top-4 left-4 z-10">
+                    <span className="bg-purple-600/80 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-md">
+                      {event.category}
+                    </span>
+                  </div>
                 </div>
 
-                <div className="relative z-10 space-y-4">
-                  <h3 className="text-xl font-bold text-white group-hover:text-purple-400 transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-400 leading-relaxed">
-                    {service.description}
-                  </p>
-                  <button className="text-purple-400 hover:text-purple-300 font-semibold flex items-center gap-2 group-hover:gap-4 transition-all duration-300">
-                    Learn More <span className="text-lg">→</span>
-                  </button>
-                </div>
+                {/* Content */}
+                <div className="p-6 space-y-4">
+                  <div>
+                    <h3 className="text-xl lg:text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">
+                      {event.title}
+                    </h3>
+                    <p className="text-gray-300 font-medium">{event.artist}</p>
+                  </div>
 
-                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-purple-500/30 group-hover:shadow-lg group-hover:shadow-purple-500/20 transition-all duration-500"></div>
+                  <div className="space-y-2 text-sm text-gray-400">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-purple-400" />
+                      <span>{event.date}</span>
+                      <Clock className="w-4 h-4 ml-2 text-purple-400" />
+                      <span>{event.time} IST</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4 text-purple-400" />
+                      <span>{event.location}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-700/50">
+                    <span className="text-2xl font-bold text-white">
+                      {event.price}
+                    </span>
+                    <button className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white px-6 py-2 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/40">
+                      <FaTicketAlt className="w-5 h-5" />
+                      Book Now
+                    </button>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-  <section className="py-20 bg-black">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            Top Events For You
-          </h2>
-          <p className="text-gray-400 text-lg">
-            Discover the hottest events happening near you
-          </p>
+      {/* Services Section */}
+
+    
+<section className="py-20 bg-[#0A0215]">
+  <div className="max-w-7xl mx-auto px-6">
+    <div className="text-center mb-16">
+      <h4 className="text-yellow-400 text-sm font-semibold">
+        ⭐ Why Join As An Artist?
+      </h4>
+      <h2 className="text-4xl lg:text-5xl font-bold text-white mt-2">
+        Book Tickets Instantly
+      </h2>
+    </div>
+
+    <div className="grid lg:grid-cols-3 gap-8">
+      {services.map((service, index) => (
+        <div
+          key={index}
+          className="group relative bg-black border border-[#FF4081] rounded-2xl p-8 hover:border-pink-500 transition-all duration-500 hover:scale-105"
+          style={{ animationDelay: `${index * 200}ms` }}
+        >
+          <div
+            className={`relative w-14 h-14 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300`}
+          >
+            <service.icon className="w-7 h-7 text-white" />
+          </div>
+
+          <div className="relative z-10 space-y-4">
+            <h3 className="text-lg font-bold text-white group-hover:text-pink-400 transition-colors">
+              {service.title}
+            </h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              {service.description}
+            </p>
+          
+          </div>
         </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {events.map((event, index) => (
-            <div
-              key={event.id}
-              className="group relative bg-gradient-to-br from-gray-900/80 to-gray-800/80 rounded-2xl overflow-hidden border border-gray-700/50 hover:border-purple-500/70 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              {/* Image */}
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent"></div>
-
-                {/* Category badge */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="bg-purple-600/80 text-white px-4 py-1.5 rounded-full text-sm font-semibold shadow-md">
-                    {event.category}
-                  </span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 space-y-4">
-                <div>
-                  <h3 className="text-xl lg:text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">
-                    {event.title}
-                  </h3>
-                  <p className="text-gray-300 font-medium">{event.artist}</p>
-                </div>
-
-                <div className="space-y-2 text-sm text-gray-400">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-purple-400" />
-                    <span>{event.date}</span>
-                    <Clock className="w-4 h-4 ml-2 text-purple-400" />
-                    <span>{event.time} IST</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-purple-400" />
-                    <span>{event.location}</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between pt-4 border-t border-gray-700/50">
-                  <span className="text-2xl font-bold text-white">
-                    {event.price}
-                  </span>
-                  <button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white px-6 py-2 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-purple-500/40">
-                    Book Now
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-6">
@@ -374,9 +376,7 @@ const User = () => {
             Find Your Next Unforgettable Experience
           </p>
           <p className="text-lg text-purple-200 mb-12 max-w-2xl mx-auto">
-            Join thousands of music lovers who trust us to deliver amazing live
-            experiences. Discover, book, and create memories that last a
-            lifetime.
+           Explore Events, Artists & Venues - Discover everything in one place. Create Memorable Nights Today!
           </p>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">

@@ -8,6 +8,8 @@ import cover2 from "@/assets/Cover2.png";
 import cover3 from "@/assets/Cover3.png";
 import working from "@/assets/working.png";
 import mobilegroup from "@/assets/mobilegroup.png";
+import applestore from "@/assets/icons/applestore.png";
+import playstore from "@/assets/icons/playstore.png";
 const Artist = () => {
   return (
     <div className="min-h-screen bg-black text-white">
@@ -30,9 +32,18 @@ const Artist = () => {
                   Connect with fans and venues worldwide through our platform
                 </p>
               </div>
-              <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105">
-                Getting Started →
-              </Button>
+             <div className="flex items-center space-x-4 pt-4">
+                <img
+                  src={applestore}
+                  alt="App Store"
+                  className="h-12 w-auto object-contain cursor-pointer"
+                />
+                <img
+                  src={playstore}
+                  alt="Google Play"
+                  className="h-12 w-auto object-contain cursor-pointer"
+                />
+              </div>
             </div>
 
             <div className="relative flex justify-center items-center animate-scale-in">
@@ -159,12 +170,7 @@ const Artist = () => {
                 Find gigs and opportunities that perfectly align with your
                 musical style and preferences.
               </p>
-              <Button
-                variant="link"
-                className="text-purple-400 hover:text-purple-300 p-0"
-              >
-                Read More →
-              </Button>
+           
             </div>
 
             <div
@@ -181,12 +187,7 @@ const Artist = () => {
                 Focus on your music while we handle the bookings, payments, and
                 logistics for you.
               </p>
-              <Button
-                variant="link"
-                className="text-purple-400 hover:text-purple-300 p-0"
-              >
-                Read More →
-              </Button>
+            
             </div>
 
             <div
@@ -203,12 +204,7 @@ const Artist = () => {
                 Our platform is designed by artists, for artists, with features
                 that understand your needs.
               </p>
-              <Button
-                variant="link"
-                className="text-purple-400 hover:text-purple-300 p-0"
-              >
-                Read More →
-              </Button>
+             
             </div>
           </div>
         </div>

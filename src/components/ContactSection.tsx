@@ -5,8 +5,8 @@ import whatsapp from '@/assets/icons/whatsapp.png';
 
 const ContactSection = () => {
   return (
-    <section className="py-20 bg-black">
-      <div className="container mx-auto px-4">
+    <section className="py-20  bg-black ">
+      <div className="container mx-auto px-20">
         <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-sm border border-purple-500/20 rounded-2xl px-8 py-20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-10">
             {/* Left Side - Text and Contact Info */}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar, Music, Users, Phone, Mail, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
-
+import whatsapp from "@/assets/icons/whatsapp.png"
+import instagram from "@/assets/icons/instagram.png"
 const Contact = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [formData, setFormData] = useState({
@@ -306,14 +307,16 @@ const Contact = () => {
           {/* Social Media */}
           <div className="flex justify-center space-x-6">
             <div className="flex items-center gap-2 text-green-400">
-              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
-                <Phone className="w-4 h-4" />
+              <div className="w-8 h-8 rounded-full flex items-center justify-center">
+                {/* <whatsapp className="w-4 h-4" /> */}
+                <img src={whatsapp} alt="" />
+
               </div>
               <span className="text-sm">WhatsApp</span>
             </div>
             <div className="flex items-center gap-2 text-pink-400">
-              <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full flex items-center justify-center">
-                <Users className="w-4 h-4" />
+              <div className="w-8 h-8 bg-gradient-to-r to-purple-500 rounded-full flex items-center justify-center">
+           <img src={instagram} alt="" />
               </div>
               <span className="text-sm">Instagram</span>
             </div>
