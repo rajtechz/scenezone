@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Calendar, Music, User, X } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Calendar, Music, User, X } from "lucide-react";
 
 const RoleModal = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +9,7 @@ const RoleModal = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpen(true);
-    }, 5000); // 5 seconds
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -35,7 +35,7 @@ const RoleModal = () => {
         {/* Options */}
         <div className="space-y-4">
           <button
-            onClick={() => handleNavigate('/host')}
+            onClick={() => handleNavigate("/host")}
             className="w-full flex items-center justify-center space-x-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white py-3 px-4 rounded-full text-lg font-semibold hover:opacity-90"
           >
             <Calendar className="w-5 h-5" />
@@ -43,14 +43,14 @@ const RoleModal = () => {
           </button>
 
           <button
-            onClick={() => handleNavigate('/artist')}
+            onClick={() => handleNavigate("/artist")}
             className="w-full flex items-center justify-center space-x-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white py-3 px-4 rounded-full text-lg font-semibold hover:opacity-90"
           >
             <Music className="w-5 h-5" />
             <span>Continue as a Artist</span>
           </button>
           <button
-            onClick={() => handleNavigate('/user')}
+            onClick={() => handleNavigate("/user")}
             className="w-full flex items-center justify-center space-x-3 bg-gradient-to-r from-pink-600 to-purple-600 text-white py-3 px-4 rounded-full text-lg font-semibold hover:opacity-90"
           >
             <User className="w-5 h-5" />

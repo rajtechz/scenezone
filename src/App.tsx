@@ -14,6 +14,7 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Layout from "./layout/Layout"; // ✅ your layout with header/footer
 import RoleModal from "./components/RoleModal";
+import Drag from "./components/useFollowPointer";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+      
         <RoleModal />
         <Routes>
           {/* Shared layout with Header + Footer */}

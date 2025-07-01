@@ -56,7 +56,7 @@ const Footer = () => {
       <FaTwitter size={18} />
     </a>
     <a
-      href="#"
+      href="https://www.instagram.com/scenezone.in/?igsh=MTFteDY2c2s2a3d2Mw%3D%3D#"
       target="_blank"
       rel="noopener noreferrer"
       className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white hover:bg-purple-700 transition-colors"
