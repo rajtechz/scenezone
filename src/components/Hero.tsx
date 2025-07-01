@@ -38,7 +38,8 @@ const Hero: React.FC = () => {
 
   return (
     <section className="relative bg-[#0A060F] py-20 overflow-hidden" ref={ref}>
-      {/* Floating background gradient */}
+     
+     
       <motion.div
         className="absolute w-[500px] h-[500px] rounded-full bg-purple-600 opacity-20 blur-3xl top-10 left-10 z-0"
         animate={{ y: [0, 20, 0] }}
@@ -65,8 +66,13 @@ const Hero: React.FC = () => {
             />
           </motion.div>
 
-                    {/* Left Content with Left-to-Right Slide */}
-          <motion.div className="z-20 relative space-y-6" variants={containerVariants} initial="hidden" animate={controls}>
+          {/* Left Content with Left-to-Right Slide */}
+          <motion.div
+            className="z-20 relative space-y-6"
+            variants={containerVariants}
+            initial="hidden"
+            animate={controls}
+          >
             <motion.p
               className="text-white text-sm tracking-widest uppercase"
               variants={itemVariants}
