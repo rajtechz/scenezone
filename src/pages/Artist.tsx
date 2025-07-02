@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import p1 from "@/assets/p1.png";
@@ -10,9 +10,63 @@ import working from "@/assets/working.png";
 import mobilegroup from "@/assets/mobilegroup.png";
 import applestore from "@/assets/icons/applestore.png";
 import playstore from "@/assets/icons/playstore.png";
+import { useSpring ,motion} from "framer-motion";
+import { FiSend } from "react-icons/fi";
+import { GoGoal } from "react-icons/go";
+import { LiaGuitarSolid } from "react-icons/lia";
+import { FaRegHeart } from "react-icons/fa";
+import { LuMusic } from "react-icons/lu";
+import { SlCalender } from "react-icons/sl";
+import { BsLightningCharge } from "react-icons/bs";
+import { LuHeartHandshake } from "react-icons/lu";
+import { MdOutlineGroup } from "react-icons/md";
+import { MdGroups2 } from "react-icons/md";
+import { CiCreditCard1 } from "react-icons/ci";
+
+import { FaToolbox } from "react-icons/fa";
+
+// Spring configuration for smooth cursor animation
+const spring = { damping: 3, stiffness: 50, restDelta: 0.001 };
+
+// Styles for the animated cursor
+const cursor = {
+  width: 50,
+  height: 50,
+  background: "radial-gradient(circle, rgba(147, 51, 234, 0.8), rgba(236, 72, 153, 0.4))",
+  borderRadius: "50%",
+  position: "absolute" as const,
+  pointerEvents: "none" as const,
+  zIndex: 9999,
+};
+
+// Reusable hook to follow mouse pointer
+const useFollowPointer = (ref: React.RefObject<HTMLDivElement>) => {
+  const x = useSpring(0, spring);
+  const y = useSpring(0, spring);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const handlePointerMove = ({ clientX, clientY }: MouseEvent) => {
+      const element = ref.current!;
+      x.set(clientX - element.offsetWidth / 2);
+      y.set(clientY - element.offsetHeight / 2 + window.scrollY);
+    };
+
+    window.addEventListener("pointermove", handlePointerMove);
+
+    return () => window.removeEventListener("pointermove", handlePointerMove);
+  }, [ref, x, y]);
+
+  return { x, y };
+};
 const Artist = () => {
+    const cursorRef = useRef<HTMLDivElement>(null);
+    const { x, y } = useFollowPointer(cursorRef);
+  
   return (
     <div className="min-h-screen bg-black text-white">
+           <motion.div ref={cursorRef} style={{ ...cursor, x, y }} />
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-black via-purple-900/30 to-black relative overflow-hidden">
         <div className="container mx-auto px-4">
@@ -142,7 +196,7 @@ const Artist = () => {
                   <Button
                     className={`w-full mt-4 bg-purple-600 hover:bg-pink-600 text-white text-sm font-semibold rounded-full transition-colors duration-300`}
                   >
-                    🎤 Apply for Gig
+                   <FiSend/> Apply for Gig
                   </Button>
                 </CardContent>
               </Card>
@@ -161,7 +215,7 @@ const Artist = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center animate-fade-in">
               <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-                <span className="text-white text-2xl">✨</span>
+                <span className="text-white text-2xl"><GoGoal/></span>
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 Opportunities that Match your Vibe
@@ -178,7 +232,7 @@ const Artist = () => {
               style={{ animationDelay: "0.2s" }}
             >
               <div className="w-20 h-20 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-                <span className="text-white text-2xl">🎵</span>
+                <span className="text-white text-2xl"><LuMusic/></span>
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 Perform More, Worry Less
@@ -195,7 +249,7 @@ const Artist = () => {
               style={{ animationDelay: "0.4s" }}
             >
               <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-                <span className="text-white text-2xl">❤️</span>
+                <span className="text-white text-2xl"><FaRegHeart/></span>
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 Built for Performers Like You
@@ -216,8 +270,8 @@ const Artist = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8 animate-fade-in">
               <div>
-                <p className="text-purple-200 text-sm font-medium mb-4 tracking-wider">
-                  🎯 ARTISTS, TOOLS & FEATURES
+                <p className="text-purple-200 text-sm font-medium mb-4 tracking-wider flex gap-3 align-middle ">
+                  <FaToolbox size={18} color="yellow"/> ARTISTS, TOOLS & FEATURES
                 </p>
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   Bring Your Crowd - Add Them To Your Lists
@@ -257,7 +311,7 @@ const Artist = () => {
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm">🔍</span>
+                    <span className="text-white text-sm"><SlCalender/></span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">
@@ -272,7 +326,7 @@ const Artist = () => {
 
                 <div className="flex items-start space-x-4">
                   <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm">⚡</span>
+                    <span className="text-white text-sm"><BsLightningCharge/></span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">
@@ -286,7 +340,7 @@ const Artist = () => {
 
                 <div className="flex items-start space-x-4">
                   <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm">📅</span>
+                    <span className="text-white text-sm"><LuHeartHandshake/></span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">
@@ -332,17 +386,17 @@ const Artist = () => {
     <div className="grid md:grid-cols-3 gap-8">
       {[
         {
-          icon: "👤",
+          icon: <MdOutlineGroup/>,
           title: "Your Artist Profile, Simplified",
           desc: "Showcase your work, set your rates, and update availability easily.",
         },
         {
-          icon: "👥",
+          icon: <MdGroups2/>,
           title: "Guest List Management for Your Fans",
           desc: "Bring Your supporters – track and manage guest entries.",
         },
         {
-          icon: "💳",
+          icon: <CiCreditCard1/>,
           title: "Easy Booking, Direct Payments, Zero Hassle",
           desc: "No middlemen. Transparent deals and fast payouts.",
         },

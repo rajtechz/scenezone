@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import {
   Users,
   Search,
@@ -25,7 +25,43 @@ import applestore from "@/assets/icons/applestore.png";
 import playstore from "@/assets/icons/playstore.png";
 import { FaTicketAlt } from "react-icons/fa";
 import { FaMusic, FaHeart, FaBullseye } from "react-icons/fa";
+import { useSpring ,motion} from "framer-motion";
 
+// Spring configuration for smooth cursor animation
+const spring = { damping: 3, stiffness: 50, restDelta: 0.001 };
+
+// Styles for the animated cursor
+const cursor = {
+  width: 50,
+  height: 50,
+  background: "radial-gradient(circle, rgba(147, 51, 234, 0.8), rgba(236, 72, 153, 0.4))",
+  borderRadius: "50%",
+  position: "absolute" as const,
+  pointerEvents: "none" as const,
+  zIndex: 9999,
+};
+
+// Reusable hook to follow mouse pointer
+const useFollowPointer = (ref: React.RefObject<HTMLDivElement>) => {
+  const x = useSpring(0, spring);
+  const y = useSpring(0, spring);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const handlePointerMove = ({ clientX, clientY }: MouseEvent) => {
+      const element = ref.current!;
+      x.set(clientX - element.offsetWidth / 2);
+      y.set(clientY - element.offsetHeight / 2 + window.scrollY);
+    };
+
+    window.addEventListener("pointermove", handlePointerMove);
+
+    return () => window.removeEventListener("pointermove", handlePointerMove);
+  }, [ref, x, y]);
+
+  return { x, y };
+};
 
 const User = () => {
  
@@ -137,9 +173,12 @@ const services = [
     { number: "5K+", label: "Verified Artists" },
     { number: "4.9★", label: "Average Rating" },
   ];
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const { x, y } = useFollowPointer(cursorRef);
 
   return (
     <>
+    <motion.div ref={cursorRef} style={{ ...cursor, x, y }} />
       {/* Final Hero Globe Section */}
       <section className="relative bg-black overflow-hidden py-20">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-pink-900/20"></div>

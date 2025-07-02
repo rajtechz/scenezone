@@ -1,7 +1,49 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Calendar, Music, Users, Phone, Mail, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
 import whatsapp from "@/assets/icons/whatsapp.png"
 import instagram from "@/assets/icons/instagram.png"
+import { useSpring,motion } from 'framer-motion';
+
+
+
+// Spring configuration for smooth cursor animation
+const spring = { damping: 3, stiffness: 50, restDelta: 0.001 };
+
+// Styles for the animated cursor
+const cursor = {
+  width: 50,
+  height: 50,
+  background: "radial-gradient(circle, rgba(147, 51, 234, 0.8), rgba(236, 72, 153, 0.4))",
+  borderRadius: "50%",
+  position: "absolute" as const,
+  pointerEvents: "none" as const,
+  zIndex: 9999,
+};
+
+// Reusable hook to follow mouse pointer
+const useFollowPointer = (ref: React.RefObject<HTMLDivElement>) => {
+  const x = useSpring(0, spring);
+  const y = useSpring(0, spring);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const handlePointerMove = ({ clientX, clientY }: MouseEvent) => {
+      const element = ref.current!;
+      x.set(clientX - element.offsetWidth / 2);
+      y.set(clientY - element.offsetHeight / 2 + window.scrollY);
+    };
+
+    window.addEventListener("pointermove", handlePointerMove);
+
+    return () => window.removeEventListener("pointermove", handlePointerMove);
+  }, [ref, x, y]);
+
+  return { x, y };
+};
+
+
+
 const Contact = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [formData, setFormData] = useState({
@@ -12,6 +54,10 @@ const Contact = () => {
     phone: '',
     message: ''
   });
+
+    const cursorRef = useRef<HTMLDivElement>(null);
+    const { x, y } = useFollowPointer(cursorRef);
+  
 
   const supportOptions = [
     {
@@ -89,6 +135,7 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <motion.div ref={cursorRef} style={{ ...cursor, x, y }} />
       {/* Get In Touch Section */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">

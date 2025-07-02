@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Link, NavLink } from "react-router-dom";
 import logo from "@/assets/logo/logo.png";
+import { IoMdClose } from "react-icons/io";
+
 const Header = () => {
   const navItems = [
     { name: "HOME", path: "/" },
@@ -17,9 +19,14 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-purple-900/20">
       <div className="container mx-auto px-5 py-5 flex items-center justify-between">
-        <div className="flex items-center">
-          <img src={logo} alt="SceneZone Logo" className="h-10 w-auto" />
-        </div>
+        <Link to="/" onClick={() => window.scrollTo(0, 0)}>
+          <img
+            src={logo}
+            alt="SceneZone Logo"
+            className="h-10 w-auto"
+            loading="lazy"
+          />
+        </Link>
 
         <nav className="md:flex items-center space-x-8">
           <div className="hidden md:flex items-center space-x-8">
@@ -42,7 +49,7 @@ const Header = () => {
             ))}
           </div>
 
-          {/* Hamburger Menu for Mobile (replacing Login button position) */}
+          {/* Hamburger Menu for Mobile */}
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -65,33 +72,21 @@ const Header = () => {
             </button>
           </div>
 
-          {/* Mobile Menu (sliding down from top with full width) */}
+          {/* Mobile Menu */}
           {isOpen && (
             <div
-              className="md:hidden fixed top-0 left-0 w-screen h-screen bg-black/90 shadow-lg transition-all duration-300 ease-in-out transform origin-top"
+              className="md:hidden fixed top-0 left-10 w-screen h-screen bg-black/90 shadow-lg transition-all duration-300 ease-in-out transform origin-top"
               style={{
                 transform: isOpen ? "translateY(0)" : "translateY(-100%)",
               }}
             >
-              <div className="container mx-auto px-4 py-6 flex flex-col items-center space-y-6">
+              <div className="container mx-auto px-4 py-6 flex flex-col items-center space-y-6 bg-black">
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-white self-end focus:outline-none margin-right-4"
+                  className="text-white focus:outline-none self-start mb-4"
                   aria-label="Close menu"
                 >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
+                  <IoMdClose size={30} />
                 </button>
 
                 {navItems.map((item) => (
@@ -99,7 +94,7 @@ const Header = () => {
                     key={item.name}
                     to={item.path}
                     className={({ isActive }) =>
-                      `block py-2 text-xl transition-colors ${
+                      `flex justify-center items-center py-2 text-xl transition-colors w-full  rounded-md ${
                         isActive
                           ? "text-purple-400"
                           : "text-white hover:text-purple-400"
@@ -118,7 +113,7 @@ const Header = () => {
                   to="https://www.google.com/"
                   onClick={() => setIsOpen(false)}
                 >
-                  <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 w-full mt-6">
+                  <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 w-full mt-6 rounded-md">
                     Admin Login
                   </Button>
                 </Link>

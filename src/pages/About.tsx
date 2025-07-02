@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Briefcase, Mic, CalendarHeart } from "lucide-react";
 import { FaCrown } from "react-icons/fa";
 import { GiGuitar } from "react-icons/gi";
 import { CiHeart } from "react-icons/ci";
-import story  from "@/assets/story.png"
-
+import story from "@/assets/story.png";
+import AOS from 'aos';
 
 import {
   CheckCircle,
@@ -25,8 +25,48 @@ import about from "@/assets/about.png";
 import cover1 from "@/assets/Cover (1).png";
 import cover2 from "@/assets/Cover (2).png";
 import cover3 from "@/assets/Cover (3).png";
+import { useSpring, motion } from "framer-motion";
+
+// Spring configuration for smooth cursor animation
+
+const spring = { damping: 3, stiffness: 50, restDelta: 0.001 };
+
+// Styles for the animated cursor
+
+const cursor = {
+  width: 50,
+  height: 50,
+  background:
+    "radial-gradient(circle, rgba(147, 51, 234, 0.8), rgba(236, 72, 153, 0.4))",
+  borderRadius: "50%",
+  position: "absolute" as const,
+  pointerEvents: "none" as const,
+  zIndex: 9999,
+};
+
+// Reusable hook to follow mouse pointer
+const useFollowPointer = (ref: React.RefObject<HTMLDivElement>) => {
+  const x = useSpring(0, spring);
+  const y = useSpring(0, spring);
+  useEffect(() => {
+    if (!ref.current) return;
+    const handlePointerMove = ({ clientX, clientY }: MouseEvent) => {
+      const element = ref.current!;
+      x.set(clientX - element.offsetWidth / 2);
+      y.set(clientY - element.offsetHeight / 2 + window.scrollY);
+    };
+    window.addEventListener("pointermove", handlePointerMove);
+
+    return () => window.removeEventListener("pointermove", handlePointerMove);
+  }, [ref, x, y]);
+
+  return { x, y };
+};
+
 const About = () => {
-const steps = [
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const { x, y } = useFollowPointer(cursorRef);
+  const steps = [
     {
       title: "Host Journey",
       icon: <FaCrown className="w-6 h-6" />,
@@ -34,13 +74,19 @@ const steps = [
       border: "border-purple-500",
       items: [
         { title: "Quick Registration" },
-        { title: "Sign Up as Host with Google/Apple or create account with full details" },
+        {
+          title:
+            "Sign Up as Host with Google/Apple or create account with full details",
+        },
         { title: "Event Creation" },
         { title: "Create new events or utilise existing SceneZone events" },
         { title: "Artist Discovery" },
         { title: "Filter artists by price, instrument, and genre preferences" },
         { title: "Flexible Hiring" },
-        { title: "Hire on salary basis, add to existing events, or create new collaboration" },
+        {
+          title:
+            "Hire on salary basis, add to existing events, or create new collaboration",
+        },
       ],
     },
     {
@@ -50,11 +96,19 @@ const steps = [
       border: "border-indigo-500",
       items: [
         { title: "Profile Setup" },
-        { title: "Define your interest, preferred event types, and target audience" },
+        {
+          title:
+            "Define your interest, preferred event types, and target audience",
+        },
         { title: "Event Selection" },
-        { title: "Browse and add preferred events to your performance wishlist" },
+        {
+          title: "Browse and add preferred events to your performance wishlist",
+        },
         { title: "Smart Matching" },
-        { title: "Get discovered by hosts through our intelligent filtering system" },
+        {
+          title:
+            "Get discovered by hosts through our intelligent filtering system",
+        },
         { title: "Performance" },
         { title: "Showcase your talent and connect with the perfect audience" },
       ],
@@ -73,8 +127,17 @@ const steps = [
     },
   ];
 
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Animation duration in ms
+      once: true, // Animation happens only once
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white">
+      <motion.div ref={cursorRef} style={{ ...cursor, x, y }} />
       <section
         className="py-24 relative bg-cover bg-center"
         style={{ backgroundImage: `url(${about})` }}
@@ -155,7 +218,7 @@ const steps = [
                   animationFillMode: "both",
                 }}
               >
-                <Card className="bg-black rounded-[18px] h-full">
+                <Card className="bg-black rounded-[18px] h-full" data-aos="fade-up">
                   <CardContent className="p-8 text-center">
                     <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full mx-auto mb-6 flex items-center justify-center">
                       {card.icon}
@@ -175,19 +238,29 @@ const steps = [
       </section>
 
       {/* Our Story */}
-     <section className="py-20 bg-gradient-to-r from-purple-700 to-pink-700">
+      <section className="py-20 bg-gradient-to-r from-purple-700 to-pink-700">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-white mb-8 border-b-2 border-blue-500 pb-4">Our Story</h2>
+              <h2 className="text-4xl font-bold text-white mb-8 border-b-2 border-blue-500 pb-4">
+                Our Story
+              </h2>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                SceneZone was born from a simple observation: the music industry needed a bridge. A bridge between talented artists seeking the right stage, passionate hosts with grand visions, and music lovers hungry for authentic experiences.
+                SceneZone was born from a simple observation: the music industry
+                needed a bridge. A bridge between talented artists seeking the
+                right stage, passionate hosts with grand visions, and music
+                lovers hungry for authentic experiences.
               </p>
               <p className="text-gray-300 mb-6 leading-relaxed">
-                Founded by a team of music enthusiasts and tech innovators, we recognized that the traditional event booking process was fragmented, inefficient, and often left all parties unsatisfied.
+                Founded by a team of music enthusiasts and tech innovators, we
+                recognized that the traditional event booking process was
+                fragmented, inefficient, and often left all parties unsatisfied.
               </p>
               <p className="text-gray-300 leading-relaxed">
-                Today, SceneZone stands as more than just a platform; it’s a thriving community where creativity meets opportunity, where dreams take the stage, and where every event becomes a masterpiece.
+                Today, SceneZone stands as more than just a platform; it’s a
+                thriving community where creativity meets opportunity, where
+                dreams take the stage, and where every event becomes a
+                masterpiece.
               </p>
             </div>
             <div className="relative">
@@ -198,7 +271,6 @@ const steps = [
                   className=" object-cover rounded-xl"
                 />
               </div>
-             
             </div>
           </div>
         </div>
@@ -211,7 +283,8 @@ const steps = [
               Our Core Values
             </h2>
             <p className="text-gray-300 text-lg max-w-3xl mx-auto">
-            These principles guide everything we do, from product development to community building
+              These principles guide everything we do, from product development
+              to community building
             </p>
           </div>
           <div className="grid md:grid-cols-4 gap-6">
@@ -258,7 +331,6 @@ const steps = [
         </div>
       </section>
 
-
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12 animate-fade-in">
@@ -277,7 +349,9 @@ const steps = [
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="flex items-center space-x-3 mb-6">
-                  <div className={`w-10 h-10 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white`}>
+                  <div
+                    className={`w-10 h-10 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center text-white`}
+                  >
                     {step.icon}
                   </div>
                   <h3 className="text-2xl font-bold">{step.title}</h3>

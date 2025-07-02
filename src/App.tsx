@@ -12,13 +12,13 @@ import Contact from "./pages/Contact";
 import User from "./pages/User";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
-import Layout from "./layout/Layout"; // ✅ your layout with header/footer
+import Layout from "./layout/Layout"; 
 import RoleModal from "./components/RoleModal";
-import Drag from "./components/useFollowPointer";
 
 const queryClient = new QueryClient();
 
 const App = () => (
+  
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
