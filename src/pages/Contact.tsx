@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Calendar, Music, Users, Phone, Mail, MapPin, ChevronDown, ChevronUp } from 'lucide-react';
-import whatsapp from "@/assets/icons/whatsapp.png"
-import instagram from "@/assets/icons/instagram.png"
-import { useSpring,motion } from 'framer-motion';
-
-
+import whatsapp from "@/assets/icons/whatsapp.png";
+import instagram from "@/assets/icons/instagram.png";
+import { useSpring, motion } from 'framer-motion';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // Spring configuration for smooth cursor animation
 const spring = { damping: 3, stiffness: 50, restDelta: 0.001 };
@@ -42,8 +42,6 @@ const useFollowPointer = (ref: React.RefObject<HTMLDivElement>) => {
   return { x, y };
 };
 
-
-
 const Contact = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   const [formData, setFormData] = useState({
@@ -55,9 +53,8 @@ const Contact = () => {
     message: ''
   });
 
-    const cursorRef = useRef<HTMLDivElement>(null);
-    const { x, y } = useFollowPointer(cursorRef);
-  
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const { x, y } = useFollowPointer(cursorRef);
 
   const supportOptions = [
     {
@@ -133,13 +130,21 @@ const Contact = () => {
     setOpenFAQ(openFAQ === index ? null : index);
   };
 
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-in-out',
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white">
       <motion.div ref={cursorRef} style={{ ...cursor, x, y }} />
       {/* Get In Touch Section */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6" data-aos="fade-in">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
+          <div className="text-center mb-16 animate-fade-in" data-aos="fade-up" data-aos-delay="100">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
               Get In Touch
             </h1>
@@ -149,20 +154,19 @@ const Contact = () => {
             </p>
           </div>
 
-          {/* Support Options Grid */}
           <div className="grid lg:grid-cols-3 gap-8 mb-20">
             {supportOptions.map((option, index) => (
               <div
                 key={index}
                 className="group bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-2xl p-8 hover:border-purple-500/50 transition-all duration-500 hover:scale-105 animate-fade-in"
                 style={{ animationDelay: `${index * 200}ms` }}
+                data-aos="zoom-in"
+                data-aos-delay={`${index * 200}`}
               >
-                {/* Icon */}
                 <div className={`w-16 h-16 bg-gradient-to-br ${option.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   <option.icon className="w-8 h-8 text-white" />
                 </div>
 
-                {/* Content */}
                 <div className="space-y-4">
                   <h3 className="text-xl font-bold group-hover:text-purple-400 transition-colors">
                     {option.title}
@@ -171,7 +175,6 @@ const Contact = () => {
                     {option.description}
                   </p>
                   
-                  {/* Features List */}
                   <ul className="space-y-2 text-sm text-gray-300">
                     {option.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2">
@@ -181,7 +184,6 @@ const Contact = () => {
                     ))}
                   </ul>
 
-                  {/* Button */}
                   <button className={`w-full bg-gradient-to-r ${option.color} text-white py-3 px-6 rounded-lg font-semibold hover:opacity-90 transition-opacity duration-300 mt-6`}>
                     {option.buttonText}
                   </button>
@@ -193,9 +195,9 @@ const Contact = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section className="py-20 px-6 bg-gray-900/50">
+      <section className="py-20 px-6 bg-gray-900/50" data-aos="fade-in">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className="text-center mb-12 animate-fade-in" data-aos="fade-up" data-aos-delay="100">
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               Send Us A Message
             </h2>
@@ -204,9 +206,8 @@ const Contact = () => {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6 animate-scale-in">
+          <form onSubmit={handleSubmit} className="space-y-6 animate-scale-in" data-aos="fade-up" data-aos-delay="200">
             <div className="grid md:grid-cols-2 gap-6">
-              {/* User Type */}
               <div>
                 <label className="block text-sm font-medium mb-2">I am a</label>
                 <select
@@ -223,7 +224,6 @@ const Contact = () => {
                 </select>
               </div>
 
-              {/* Subject */}
               <div>
                 <label className="block text-sm font-medium mb-2">Subject</label>
                 <input
@@ -238,7 +238,6 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Full Name */}
             <div>
               <label className="block text-sm font-medium mb-2">Full Name</label>
               <input
@@ -253,7 +252,6 @@ const Contact = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
-              {/* Email */}
               <div>
                 <label className="block text-sm font-medium mb-2">Email Address</label>
                 <input
@@ -267,7 +265,6 @@ const Contact = () => {
                 />
               </div>
 
-              {/* Phone */}
               <div>
                 <label className="block text-sm font-medium mb-2">Phone Number</label>
                 <input
@@ -281,7 +278,6 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Message */}
             <div>
               <label className="block text-sm font-medium mb-2">Message</label>
               <textarea
@@ -295,10 +291,11 @@ const Contact = () => {
               ></textarea>
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 text-white py-4 px-8 rounded-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
+              data-aos="fade-up"
+              data-aos-delay="300"
             >
               Send Message
             </button>
@@ -307,8 +304,8 @@ const Contact = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-purple-900/20 to-pink-900/20">
-        <div className="max-w-4xl mx-auto text-center animate-fade-in">
+      <section className="py-20 px-6 bg-gradient-to-br from-purple-900/20 to-pink-900/20" data-aos="fade-in">
+        <div className="max-w-4xl mx-auto text-center animate-fade-in" data-aos="fade-up" data-aos-delay="100">
           <div className="mb-12">
             <p className="text-purple-400 text-sm font-medium tracking-wide uppercase mb-4">
               DON'T JUST SUBSCRIBE
@@ -320,61 +317,57 @@ const Contact = () => {
             </h2>
           </div>
 
-          {/* Contact Info */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="flex flex-col items-center space-y-2">
-              <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                <Phone className="w-6 h-6" />
+            {[
+              { name: "Ms Jonita Jones", phone: "+91146537038" },
+              { name: "Ms Jonita Jones", phone: "+91130904315" },
+              { name: "Ms Bell Lizard", phone: "+91824078458" },
+            ].map((contact, index) => (
+              <div key={index} className="flex flex-col items-center space-y-2" data-aos="zoom-in" data-aos-delay={`${index * 200}`}>
+                <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                  <Phone className="w-6 h-6" />
+                </div>
+                <div className="text-center">
+                  <p className="text-sm text-gray-400">{contact.name}</p>
+                  <a href={`tel:${contact.phone}`} className="font-bold hover:text-purple-400 transition-colors">
+                    {contact.phone}
+                  </a>
+                </div>
               </div>
-              <div className="text-center">
-                <p className="text-sm text-gray-400">Ms Jonita Jones</p>
-                <p className="font-bold">0146537038</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                <Phone className="w-6 h-6" />
-              </div>
-              <div className="text-center">
-                <p className="text-sm text-gray-400">Ms Jonita Jones</p>
-                <p className="font-bold">0130904315</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center space-y-2">
-              <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
-                <Phone className="w-6 h-6" />
-              </div>
-              <div className="text-center">
-                <p className="text-sm text-gray-400">Ms Bell Lizard</p>
-                <p className="font-bold">0824078458</p>
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* Social Media */}
-          <div className="flex justify-center space-x-6">
-            <div className="flex items-center gap-2 text-green-400">
+          <div className="flex justify-center space-x-6" data-aos="fade-up" data-aos-delay="400">
+            <a
+              href="https://wa.me/+91146537038"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors"
+            >
               <div className="w-8 h-8 rounded-full flex items-center justify-center">
-                {/* <whatsapp className="w-4 h-4" /> */}
-                <img src={whatsapp} alt="" />
-
+                <img src={whatsapp} alt="WhatsApp" />
               </div>
               <span className="text-sm">WhatsApp</span>
-            </div>
-            <div className="flex items-center gap-2 text-pink-400">
+            </a>
+            <a
+              href="https://www.instagram.com/scenezone.in?igsh=MTFteDY2c2s2a3d2Mw=="
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-pink-400 hover:text-pink-300 transition-colors"
+            >
               <div className="w-8 h-8 bg-gradient-to-r to-purple-500 rounded-full flex items-center justify-center">
-           <img src={instagram} alt="" />
+                <img src={instagram} alt="Instagram" />
               </div>
               <span className="text-sm">Instagram</span>
-            </div>
+            </a>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6" data-aos="fade-in">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16 animate-fade-in">
+          <div className="text-center mb-16 animate-fade-in" data-aos="fade-up" data-aos-delay="100">
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">
               Frequently Asked Questions
             </h2>
@@ -389,6 +382,8 @@ const Contact = () => {
                 key={index}
                 className="bg-gray-900 border border-gray-700 rounded-lg overflow-hidden animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
+                data-aos="fade-up"
+                data-aos-delay={`${index * 200}`}
               >
                 <button
                   onClick={() => toggleFAQ(index)}
@@ -402,7 +397,7 @@ const Contact = () => {
                   )}
                 </button>
                 {openFAQ === index && (
-                  <div className="px-6 pb-4 animate-fade-in">
+                  <div className="px-6 pb-4 animate-fade-in" data-aos="fade-in" data-aos-delay="100">
                     <p className="text-gray-400 leading-relaxed">{faq.answer}</p>
                   </div>
                 )}

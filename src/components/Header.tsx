@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "@/assets/logo/logo.png";
 import { IoMdClose } from "react-icons/io";
 
 const Header = () => {
+  const navigate = useNavigate();
   const navItems = [
     { name: "HOME", path: "/" },
     { name: "ABOUT", path: "/about" },
@@ -113,7 +114,10 @@ const Header = () => {
                   to="https://www.google.com/"
                   onClick={() => setIsOpen(false)}
                 >
-                  <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 w-full mt-6 rounded-md">
+                  <Button
+                    onClick={(e) => navigate("/adminLogin")}
+                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 w-full mt-6 rounded-md"
+                  >
                     Admin Login
                   </Button>
                 </Link>
@@ -124,11 +128,12 @@ const Header = () => {
 
         {/* Login button for desktop */}
         <div className="hidden md:block">
-          <Link to="https://www.google.com/">
-            <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0">
-              Admin Login
-            </Button>
-          </Link>
+          <Button
+            onClick={() => navigate("/adminLogin")}
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0"
+          >
+            Admin Login
+          </Button>
         </div>
       </div>
     </header>

@@ -10,7 +10,7 @@ import working from "@/assets/working.png";
 import mobilegroup from "@/assets/mobilegroup.png";
 import applestore from "@/assets/icons/applestore.png";
 import playstore from "@/assets/icons/playstore.png";
-import { useSpring ,motion} from "framer-motion";
+import { useSpring, motion } from "framer-motion";
 import { FiSend } from "react-icons/fi";
 import { GoGoal } from "react-icons/go";
 import { LiaGuitarSolid } from "react-icons/lia";
@@ -22,8 +22,9 @@ import { LuHeartHandshake } from "react-icons/lu";
 import { MdOutlineGroup } from "react-icons/md";
 import { MdGroups2 } from "react-icons/md";
 import { CiCreditCard1 } from "react-icons/ci";
-
 import { FaToolbox } from "react-icons/fa";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // Spring configuration for smooth cursor animation
 const spring = { damping: 3, stiffness: 50, restDelta: 0.001 };
@@ -60,18 +61,27 @@ const useFollowPointer = (ref: React.RefObject<HTMLDivElement>) => {
 
   return { x, y };
 };
+
 const Artist = () => {
-    const cursorRef = useRef<HTMLDivElement>(null);
-    const { x, y } = useFollowPointer(cursorRef);
-  
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const { x, y } = useFollowPointer(cursorRef);
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-in-out',
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white">
-           <motion.div ref={cursorRef} style={{ ...cursor, x, y }} />
+      <motion.div ref={cursorRef} style={{ ...cursor, x, y }} />
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-black via-purple-900/30 to-black relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-black via-purple-900/30 to-black relative overflow-hidden" data-aos="fade-in">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 animate-fade-in">
+            <div className="space-y-8 animate-fade-in" data-aos="fade-up" data-aos-delay="100">
               <div>
                 <p className="text-purple-400 text-sm font-medium mb-4 tracking-wider">
                   JOINED MUSIC LOVERS, LIVE STREAMING
@@ -86,7 +96,7 @@ const Artist = () => {
                   Connect with fans and venues worldwide through our platform
                 </p>
               </div>
-             <div className="flex items-center space-x-4 pt-4">
+              <div className="flex items-center space-x-4 pt-4" data-aos="fade-up" data-aos-delay="200">
                 <img
                   src={applestore}
                   alt="App Store"
@@ -100,7 +110,7 @@ const Artist = () => {
               </div>
             </div>
 
-            <div className="relative flex justify-center items-center animate-scale-in">
+            <div className="relative flex justify-center items-center animate-scale-in" data-aos="zoom-in" data-aos-delay="300">
               <div className="w-80 h-80 relative">
                 <img
                   src={p2}
@@ -118,10 +128,9 @@ const Artist = () => {
       </section>
 
       {/* Featured Artist Opportunities */}
-
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-black" data-aos="fade-in">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-fade-in" data-aos="fade-up" data-aos-delay="100">
             Featured Artist Opportunities
           </h2>
 
@@ -155,20 +164,19 @@ const Artist = () => {
               <Card
                 key={index}
                 className="bg-[#140C1C] border border-purple-800 rounded-xl shadow-lg hover:shadow-purple-500/30 transition-all duration-300 hover:scale-105 overflow-hidden"
+                data-aos="zoom-in"
+                data-aos-delay={`${index * 200}`}
               >
-                {/* Cover Image */}
                 <div className="relative h-48 w-full">
                   <img
                     src={event.cover}
                     alt="Event Cover"
                     className="w-full h-full object-cover"
                   />
-                  {/* Optional Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 </div>
 
                 <CardContent className="p-4 space-y-3">
-                  {/* Location and Genre */}
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-white flex items-center gap-1">
                       <i className="fas fa-map-marker-alt" /> {event.location}
@@ -180,7 +188,6 @@ const Artist = () => {
                     </span>
                   </div>
 
-                  {/* Date and Price */}
                   <div className="flex items-center justify-between text-gray-300 text-sm">
                     <div className="flex items-center gap-2">
                       <i className="fas fa-calendar" />
@@ -192,11 +199,10 @@ const Artist = () => {
                     </div>
                   </div>
 
-                  {/* CTA Button */}
                   <Button
                     className={`w-full mt-4 bg-purple-600 hover:bg-pink-600 text-white text-sm font-semibold rounded-full transition-colors duration-300`}
                   >
-                   <FiSend/> Apply for Gig
+                    <FiSend /> Apply for Gig
                   </Button>
                 </CardContent>
               </Card>
@@ -206,16 +212,16 @@ const Artist = () => {
       </section>
 
       {/* Why Join As An Artist Section */}
-      <section className="py-20 bg-gradient-to-br from-black via-purple-900/20 to-black">
+      <section className="py-20 bg-gradient-to-br from-black via-purple-900/20 to-black" data-aos="fade-in">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-fade-in" data-aos="fade-up" data-aos-delay="100">
             Why Join As An Artist?
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center animate-fade-in">
+            <div className="text-center animate-fade-in" data-aos="fade-up" data-aos-delay="100">
               <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-                <span className="text-white text-2xl"><GoGoal/></span>
+                <span className="text-white text-2xl"><GoGoal /></span>
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 Opportunities that Match your Vibe
@@ -224,15 +230,16 @@ const Artist = () => {
                 Find gigs and opportunities that perfectly align with your
                 musical style and preferences.
               </p>
-           
             </div>
 
             <div
               className="text-center animate-fade-in"
               style={{ animationDelay: "0.2s" }}
+              data-aos="fade-up"
+              data-aos-delay="200"
             >
               <div className="w-20 h-20 bg-gradient-to-r from-pink-600 to-purple-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-                <span className="text-white text-2xl"><LuMusic/></span>
+                <span className="text-white text-2xl"><LuMusic /></span>
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 Perform More, Worry Less
@@ -241,15 +248,16 @@ const Artist = () => {
                 Focus on your music while we handle the bookings, payments, and
                 logistics for you.
               </p>
-            
             </div>
 
             <div
               className="text-center animate-fade-in"
               style={{ animationDelay: "0.4s" }}
+              data-aos="fade-up"
+              data-aos-delay="300"
             >
               <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl flex items-center justify-center mx-auto mb-6">
-                <span className="text-white text-2xl"><FaRegHeart/></span>
+                <span className="text-white text-2xl"><FaRegHeart /></span>
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">
                 Built for Performers Like You
@@ -258,20 +266,19 @@ const Artist = () => {
                 Our platform is designed by artists, for artists, with features
                 that understand your needs.
               </p>
-             
             </div>
           </div>
         </div>
       </section>
 
       {/* Bring Your Crowd Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-900 via-pink-900 to-purple-900">
+      <section className="py-20 bg-gradient-to-r from-purple-900 via-pink-900 to-purple-900" data-aos="fade-in">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 animate-fade-in">
+            <div className="space-y-8 animate-fade-in" data-aos="fade-right" data-aos-delay="100">
               <div>
-                <p className="text-purple-200 text-sm font-medium mb-4 tracking-wider flex gap-3 align-middle ">
-                  <FaToolbox size={18} color="yellow"/> ARTISTS, TOOLS & FEATURES
+                <p className="text-purple-200 text-sm font-medium mb-4 tracking-wider flex gap-3 align-middle">
+                  <FaToolbox size={18} color="yellow" /> ARTISTS, TOOLS & FEATURES
                 </p>
                 <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   Bring Your Crowd - Add Them To Your Lists
@@ -285,7 +292,7 @@ const Artist = () => {
               </div>
             </div>
 
-            <div className="relative flex justify-center items-center animate-scale-in">
+            <div className="relative flex justify-center items-center animate-scale-in" data-aos="fade-left" data-aos-delay="200">
               <div className="w-80 h-80 bg-gradient-to-br from-purple-600/30 to-pink-600/30 rounded-xl relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-pink-500/20 animate-pulse z-0" />
                 <img
@@ -300,18 +307,18 @@ const Artist = () => {
       </section>
 
       {/* Your Next Stage Section */}
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-black" data-aos="fade-in">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16 animate-fade-in" data-aos="fade-up" data-aos-delay="100">
             Your Next Stage Is Just A Tap Away
           </h2>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8 animate-fade-in">
+            <div className="space-y-8 animate-fade-in" data-aos="fade-right" data-aos-delay="100">
               <div className="space-y-6">
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-4" data-aos="fade-up" data-aos-delay="200">
                   <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm"><SlCalender/></span>
+                    <span className="text-white text-sm"><SlCalender /></span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">
@@ -324,9 +331,9 @@ const Artist = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-4" data-aos="fade-up" data-aos-delay="300">
                   <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm"><BsLightningCharge/></span>
+                    <span className="text-white text-sm"><BsLightningCharge /></span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">
@@ -338,9 +345,9 @@ const Artist = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
+                <div className="flex items-start space-x-4" data-aos="fade-up" data-aos-delay="400">
                   <div className="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm"><LuHeartHandshake/></span>
+                    <span className="text-white text-sm"><LuHeartHandshake /></span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">
@@ -358,8 +365,8 @@ const Artist = () => {
               </Button>
             </div>
 
-            <div className="relative flex justify-center items-center animate-scale-in">
-              <div className="w-80 h-80 rounded-2xl flex items-center justify-center overflow-hidden  bg-transparent">
+            <div className="relative flex justify-center items-center animate-scale-in" data-aos="fade-left" data-aos-delay="200">
+              <div className="w-80 h-80 rounded-2xl flex items-center justify-center overflow-hidden bg-transparent">
                 <img
                   src={mobilegroup}
                   alt=""
@@ -372,57 +379,58 @@ const Artist = () => {
       </section>
 
       {/* Everything You Need To Succeed Section */}
-      <section className="py-20 bg-gradient-to-br from-black via-purple-900/20 to-black">
-  <div className="container mx-auto px-4">
-    <div className="text-center mb-16 animate-fade-in">
-      <p className="text-yellow-400 text-sm font-semibold mb-2 tracking-wide">
-        🧰 Artists, Tools & Features
-      </p>
-      <h2 className="text-4xl md:text-5xl font-bold text-white">
-        Everything You Need To Succeed
-      </h2>
-    </div>
-
-    <div className="grid md:grid-cols-3 gap-8">
-      {[
-        {
-          icon: <MdOutlineGroup/>,
-          title: "Your Artist Profile, Simplified",
-          desc: "Showcase your work, set your rates, and update availability easily.",
-        },
-        {
-          icon: <MdGroups2/>,
-          title: "Guest List Management for Your Fans",
-          desc: "Bring Your supporters – track and manage guest entries.",
-        },
-        {
-          icon: <CiCreditCard1/>,
-          title: "Easy Booking, Direct Payments, Zero Hassle",
-          desc: "No middlemen. Transparent deals and fast payouts.",
-        },
-      ].map((item, index) => (
-        <div
-          key={index}
-          className="text-center border border-[#5B21B6] rounded-xl p-8 hover:scale-105 transition-transform duration-300 shadow-md hover:shadow-purple-700/20"
-        >
-          <div className="w-12 h-12 rounded-full bg-purple-600 text-white flex items-center justify-center text-xl mx-auto mb-6">
-            {item.icon}
+      <section className="py-20 bg-gradient-to-br from-black via-purple-900/20 to-black" data-aos="fade-in">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 animate-fade-in" data-aos="fade-up" data-aos-delay="100">
+            <p className="text-yellow-400 text-sm font-semibold mb-2 tracking-wide">
+              🧰 Artists, Tools & Features
+            </p>
+            <h2 className="text-4xl md:text-5xl font-bold text-white">
+              Everything You Need To Succeed
+            </h2>
           </div>
-          <h3 className="text-white text-lg font-semibold mb-2">
-            {item.title}
-          </h3>
-          <p className="text-gray-400 text-sm">{item.desc}</p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
 
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <MdOutlineGroup />,
+                title: "Your Artist Profile, Simplified",
+                desc: "Showcase your work, set your rates, and update availability easily.",
+              },
+              {
+                icon: <MdGroups2 />,
+                title: "Guest List Management for Your Fans",
+                desc: "Bring Your supporters – track and manage guest entries.",
+              },
+              {
+                icon: <CiCreditCard1 />,
+                title: "Easy Booking, Direct Payments, Zero Hassle",
+                desc: "No middlemen. Transparent deals and fast payouts.",
+              },
+            ].map((item, index) => (
+              <div
+                key={index}
+                className="text-center border border-[#5B21B6] rounded-xl p-8 hover:scale-105 transition-transform duration-300 shadow-md hover:shadow-purple-700/20"
+                data-aos="zoom-in"
+                data-aos-delay={`${index * 200}`}
+              >
+                <div className="w-12 h-12 rounded-full bg-purple-600 text-white flex items-center justify-center text-xl mx-auto mb-6">
+                  {item.icon}
+                </div>
+                <h3 className="text-white text-lg font-semibold mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-gray-400 text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Join as an Artist Today Section */}
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-black" data-aos="fade-in">
         <div className="container mx-auto px-4 text-center">
-          <div className="animate-fade-in">
+          <div className="animate-fade-in" data-aos="fade-up" data-aos-delay="100">
             <p className="text-purple-400 text-sm font-medium mb-4 tracking-wider">
               🎯 ARTIST TOOLS & FEATURES
             </p>
@@ -433,7 +441,7 @@ const Artist = () => {
               Don't just wait for gigs - go get them
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8" data-aos="fade-up" data-aos-delay="200">
               <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105">
                 Claim Your Stage →
               </Button>

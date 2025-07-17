@@ -16,6 +16,7 @@ import Layout from "./layout/Layout";
 import RoleModal from "./components/RoleModal";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
+import AdminLogin from "./pages/AdminLogin";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/privacy" element={<PrivacyPolicyPage />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/adminLogin" element={<AdminLogin />} />
           </Route>
 
           {/* Standalone routes (optional) */}
