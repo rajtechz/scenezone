@@ -12,19 +12,19 @@ import Contact from "./pages/Contact";
 import User from "./pages/User";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
-import Layout from "./layout/Layout"; 
+import Layout from "./layout/Layout";
 import RoleModal from "./components/RoleModal";
+import TermsPage from "./pages/TermsPage";
+import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
-      
         <RoleModal />
         <Routes>
           {/* Shared layout with Header + Footer */}
@@ -34,6 +34,8 @@ const App = () => (
             <Route path="/host" element={<Host />} />
             <Route path="/artist" element={<Artist />} />
             <Route path="/user" element={<User />} />
+            <Route path="/terms" element={<TermsPage />} />
+            <Route path="/privacy" element={<PrivacyPolicyPage />} />
             <Route path="/contact" element={<Contact />} />
           </Route>
 
