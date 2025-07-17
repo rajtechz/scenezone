@@ -18,8 +18,8 @@ const TermsPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16" data-aos="fade-up" data-aos-delay="100">
             <h1 className="text-5xl md:text-6xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Terms and Conditions
+              <span className="">
+                Terms and Conditions 
               </span>
             </h1>
             <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">

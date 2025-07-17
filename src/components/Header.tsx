@@ -110,10 +110,7 @@ const Header = () => {
                   </NavLink>
                 ))}
 
-                <Link
-                  to="https://www.google.com/"
-                  onClick={() => setIsOpen(false)}
-                >
+                <Link to="/adminLogin" onClick={() => setIsOpen(false)}>
                   <Button
                     onClick={(e) => navigate("/adminLogin")}
                     className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0 w-full mt-6 rounded-md"

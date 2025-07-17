@@ -98,28 +98,32 @@ const Footer = () => {
           </p>
 
           {/* Inside Footer */}
-          <p className="text-gray-400 text-sm">
-            <Link
-              to="/terms"
-              className="hover:text-purple-400 transition-colors"
-            >
-              Terms & Conditions
-            </Link>{" "}
-            |{" "}
-            <Link
-              to="/privacy"
-              className="hover:text-purple-400 transition-colors"
-            >
-              Privacy Policy
-            </Link>{" "}
-            |{" "}
-            <Link
-              to="/contact"
-              className="hover:text-purple-400 transition-colors"
-            >
-              Contact Us
-            </Link>
-          </p>
+        
+<p className="text-gray-400 text-sm">
+  <Link
+    to="/terms"
+    onClick={() => window.scrollTo(0, 0)}
+    className="hover:text-purple-400 transition-colors"
+  >
+    Terms & Conditions
+  </Link>{" "}
+  |{" "}
+  <Link
+    to="/privacy"
+    onClick={() => window.scrollTo(0, 0)}
+    className="hover:text-purple-400 transition-colors"
+  >
+    Privacy Policy
+  </Link>{" "}
+  |{" "}
+  <Link
+    to="/contact"
+    onClick={() => window.scrollTo(0, 0)}
+    className="hover:text-purple-400 transition-colors"
+  >
+    Contact Us
+  </Link>
+</p>
         </div>
       </div>
     </footer>

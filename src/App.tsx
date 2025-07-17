@@ -17,6 +17,7 @@ import RoleModal from "./components/RoleModal";
 import TermsPage from "./pages/TermsPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import AdminLogin from "./pages/AdminLogin";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <RoleModal />
+         <ScrollToTop />
         <Routes>
           {/* Shared layout with Header + Footer */}
           <Route element={<Layout />}>
